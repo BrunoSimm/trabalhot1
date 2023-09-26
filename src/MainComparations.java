@@ -4,16 +4,16 @@ public class MainComparations {
 
     private static final Random random = new Random();
 
-    public static ListOfIntegers<LinkedListOfIntegers> getLinkedMock() {
-        ListOfIntegers<LinkedListOfIntegers> linkedArray = new LinkedListOfIntegers();
+    public static ListOfIntegers getLinkedMock() {
+        ListOfIntegers linkedArray = new LinkedListOfIntegers();
         for (int i = 0; i < 5000; i++) {
             linkedArray.add(random.nextInt(10000));
         }
         return linkedArray;
     }
 
-    public static ListOfIntegers<ListArrayOfIntegers> getArrayMock() {
-        ListOfIntegers<ListArrayOfIntegers> arrayStatic = new ListArrayOfIntegers();
+    public static ListOfIntegers getArrayMock() {
+        ListOfIntegers arrayStatic = new ListArrayOfIntegers();
         for (int i = 0; i < 5000; i++) {
             arrayStatic.add(random.nextInt(10000));
         }
@@ -38,7 +38,7 @@ public class MainComparations {
         getSubSetTest(getLinkedMock(), getArrayMock());
     }
 
-    public static void getSubSetTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void getSubSetTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.getSubset(0, 4999);
         long endTimeA = System.nanoTime();
@@ -53,7 +53,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void reverseTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void reverseTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.reverse();
         long endTimeA = System.nanoTime();
@@ -68,7 +68,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void sortTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void sortTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.sort();
         long endTimeA = System.nanoTime();
@@ -83,7 +83,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void clearTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void clearTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.clear();
         long endTimeA = System.nanoTime();
@@ -98,7 +98,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void indexOfTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void indexOfTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         linkedArray.set(4500, 200);
         long startTimeA = System.nanoTime();
         linkedArray.indexOf(200);
@@ -115,7 +115,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void containsTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void containsTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         linkedArray.set(4500, 200);
         long startTimeA = System.nanoTime();
         linkedArray.contains(200);
@@ -132,7 +132,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void getSizeTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void getSizeTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.getSize();
         long endTimeA = System.nanoTime();
@@ -147,7 +147,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void isEmptyTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void isEmptyTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.isEmpty();
         long endTimeA = System.nanoTime();
@@ -162,7 +162,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void removeByIndexTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void removeByIndexTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.removeByIndex(4500);
         long endTimeA = System.nanoTime();
@@ -177,7 +177,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void removeAllTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void removeAllTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         linkedArray.set(4500, 200);
         linkedArray.set(2150, 200);
         long startTimeA = System.nanoTime();
@@ -196,7 +196,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void removeTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void removeTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         linkedArray.set(4500, 200);
         long startTimeA = System.nanoTime();
         linkedArray.remove(200);
@@ -213,7 +213,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void setTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void setTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.set(4500, 200);
         long endTimeA = System.nanoTime();
@@ -228,7 +228,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void getTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void getTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.get(4500);
         long endTimeA = System.nanoTime();
@@ -243,7 +243,7 @@ public class MainComparations {
         System.out.println("-------------------");
     }
 
-    public static void addIndexTest(ListOfIntegers<LinkedListOfIntegers> linkedArray, ListOfIntegers<ListArrayOfIntegers> arrayStatic) {
+    public static void addIndexTest(ListOfIntegers linkedArray, ListOfIntegers arrayStatic) {
         long startTimeA = System.nanoTime();
         linkedArray.add(4500, 1);
         long endTimeA = System.nanoTime();
@@ -260,7 +260,7 @@ public class MainComparations {
 
     public static void addTest() {
         // LINKED LIST
-        ListOfIntegers<LinkedListOfIntegers> linkedArray = new LinkedListOfIntegers();
+        ListOfIntegers linkedArray = new LinkedListOfIntegers();
         long startTimeA = System.nanoTime();
         for (int i = 0; i < 5000; i++) {
             linkedArray.add(random.nextInt(10000));
@@ -269,7 +269,7 @@ public class MainComparations {
 
         // LIST ARRAY
         long startTimeB = System.nanoTime();
-        ListOfIntegers<ListArrayOfIntegers> arrayStatic = new ListArrayOfIntegers();
+        ListOfIntegers arrayStatic = new ListArrayOfIntegers();
         for (int i = 0; i < 5000; i++) {
             arrayStatic.add(random.nextInt(10000));
         }
