@@ -1,0 +1,10 @@
+
+7
+java:S1220""Move this file to a named package.8ÁËÕ«1
+^
+java:S1854"<Remove this useless assignment to local variable "newArray".(Ü¡ëôúÿÿÿÿ8œ„ú«1
+X	java:S125"<This block of commented-out lines of code should be removed.(¸“İ·8Ôµ†ú«1
+O
+java:S1481"-Remove this unused "newArray" local variable.(Ü¡ëôúÿÿÿÿ8¢„ú«1
+W	java:S125"<This block of commented-out lines of code should be removed.(“‚…Q8£„ú«1
+L	java:S106"+Replace this use of System.out by a logger.(í¹İşÿÿÿÿ8ÈËÕ«1
