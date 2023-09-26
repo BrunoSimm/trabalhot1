@@ -1,6 +1,6 @@
 public class MainArray {
     public static void main(String[] args) {
-        ListOfIntegers array = new ListArrayOfIntegers(5);
+        ListOfIntegers<ListArrayOfIntegers> array = new ListArrayOfIntegers(5);
         array.add(12);
         array.add(15);
         array.add(13);
@@ -12,10 +12,7 @@ public class MainArray {
 //        array.removeAll(0);
 //        array.removeByIndex(0);
 //        array.add(25);
-        ListOfIntegers newArray = array.getSubset(0, 2);
+        ListArrayOfIntegers newArray = array.getSubset(0, 2);
 //        array.reverse();
         array.sort();
         System.out.println(array);
-
-    }
-}
