@@ -1,10 +1,18 @@
-public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers> {
+/**
+ * Classe que implementa a estrutura de dados e os
+ * procedimentos de uma lista  encadeada de inteiros
+ * usando nodos.
+ *
+ * @author Bruno Simm
+ * @author Joao Gabriel Bergamaschi
+ */
+public class LinkedListOfIntegers implements ListOfIntegers {
 
     //Primeiro elemento da lista.
     private Node head;
     // último elemento da lista.
     private Node tail;
-    // Quantidade de elementos da lista.
+    // Quantidade de elementos na lista.
     private int count;
 
     public LinkedListOfIntegers() {
@@ -27,7 +35,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public void add(int index, int element) {
-        this.rangeCheck(index);
+        rangeCheck(index, count);
         Node newNode = new Node(element);
 
         if (count > 0 && index == count) { //Adicionar no final da lista
@@ -54,7 +62,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public int get(int index) {
-        this.rangeCheck(index);
+        rangeCheck(index, count);
         Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
@@ -64,7 +72,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public int set(int index, int element) {
-        this.rangeCheck(index);
+        rangeCheck(index, count);
         Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
@@ -140,7 +148,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public int removeByIndex(int index) {
-        this.rangeCheck(index);
+        rangeCheck(index, count);
         if (index == 0) { //Remover primeiro elemento
             int element = head.element;
             head = head.next;
@@ -254,11 +262,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public LinkedListOfIntegers getSubset(int start, int end) {
-        if (start >= end) {
-            throw new IllegalArgumentException("End index must be greater than Start");
-        }
-        rangeCheck(start);
-        rangeCheck(end);
+        rangeCheck(start, end, count);
         LinkedListOfIntegers newList = new LinkedListOfIntegers();
         Node current = head;
         for (int i = 0; i < end; i++) {
@@ -270,18 +274,8 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
         return newList;
     }
 
-    /**
-     * Verifica se o index é valido para o estado atual da lista.
-     *
-     * @throws IndexOutOfBoundsException se o index for inválido.
-     */
-    private void rangeCheck(int index) {
-        if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException("Invalid index = " + index);
-        }
-    }
-
     private class Node {
+
         public int element;
         public Node next;
 
@@ -293,5 +287,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
             this.element = element;
             this.next = next;
         }
+
     }
+
 }

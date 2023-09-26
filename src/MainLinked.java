@@ -1,6 +1,6 @@
 public class MainLinked {
     public static void main(String[] args) {
-        ListOfIntegers<LinkedListOfIntegers> array = new LinkedListOfIntegers();
+        ListOfIntegers array = new LinkedListOfIntegers();
         array.add(11);
 
         array.add(15);
@@ -17,7 +17,7 @@ public class MainLinked {
         array.removeAll(11);
 //        array.removeByIndex(0);
 //        array.add(25);
-//        LinkedListOfIntegers newArray = array.getSubset(0, 3);
+        ListOfIntegers newArray = array.getSubset(0, 3);
 //        array.reverse();
 //        array.sort();
         System.out.println(array);
