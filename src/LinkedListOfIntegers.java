@@ -111,22 +111,31 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
         if (count == 0) return removed;
 
+        if (head.element == element) { // se remocao do primeiro
+            if (count == 1) { // se tem apenas 1 elemento na lista
+                tail = null;
+            }
+            head = head.next;
+            count--;
+        }
+
         Node current = head.next;
         Node previous = head;
-        for (int i = 0; i < count; i++) {
+        while (current != null) {
             if (current.element == element) {
-                if (current == tail) { // se remocao do ultimo
-                    tail = previous;
-                } else { // se remocao do meio
-                    previous.next = current.next;
+                if (current == tail) { // Se remocao do ultimo
+                    tail = previous; // Atualiza a tail para o elemento anterior.
+                    tail.next = null;
+                } else { // Se remocao do meio
+                    previous.next = current.next; // Remove o ponteiro de current, removendo-o.
                 }
                 count--;
                 removed = true;
             }
-            previous = previous.next;
+            previous = current;
             current = current.next;
         }
-        return removed;
+        return removed; // Retorna true se pelo menos um elemento foi removido.
     }
 
     @Override
