@@ -1,10 +1,10 @@
 public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers> {
 
-    // Referência para o primeiro elemento da lista encadeada.
+    //Primeiro elemento da lista.
     private Node head;
-    // Referência para o último elemento da lista encadeada.
+    // último elemento da lista.
     private Node tail;
-    // Contador para a quantidade de elementos que a lista contem.
+    // Quantidade de elementos da lista.
     private int count;
 
     public LinkedListOfIntegers() {
@@ -28,12 +28,28 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
     @Override
     public void add(int index, int element) {
         this.rangeCheck(index);
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
+        Node newNode = new Node(element);
+
+        if (count > 0 && index == count) { //Adicionar no final da lista
+            tail.next = newNode;
+            tail = newNode;
+        } else if (index == 0) { //Adicionar no inicio da lista
+            if (count == 0) {
+                tail = newNode;
+            } else {
+                newNode.next = head;
+            }
+            head = newNode;
+        } else { // Adicionar no "meio" da lista
+            Node current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
         }
-
-
+        // Incrementa o count
+        count++;
     }
 
     @Override
@@ -116,12 +132,10 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
     @Override
     public int removeByIndex(int index) {
         this.rangeCheck(index);
-
-        // Se remocao do primeiro
-        if (index == 0) {
+        if (index == 0) { //Remover primeiro elemento
             int element = head.element;
             head = head.next;
-            if (count == 1) {// se tinha apenas um elemento na lista
+            if (count == 1) {
                 tail = null;
             }
             count--;
@@ -133,14 +147,11 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
             previous = previous.next;
         }
         int elementRemoved = previous.next.element;
-        if (index == count - 1) { //se remocao do ultimo
+        if (index == count - 1) { //Remover ultimo elemento.
             tail = previous;
             tail.next = null;
-        } else { // se remocao do meio
+        } else { //Remover no "meio".
             previous.next = previous.next.next;
-            // Alternativa para o comando acima
-            // Node aux = ant.next;
-            // ant.next = aux.next;
         }
         count--;
         return elementRemoved;
@@ -205,7 +216,20 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public LinkedListOfIntegers getSubset(int start, int end) {
-        return null;
+        if (start >= end) {
+            throw new IllegalArgumentException("End index must be greater than Start");
+        }
+        rangeCheck(start);
+        rangeCheck(end);
+        LinkedListOfIntegers newList = new LinkedListOfIntegers();
+        Node current = head;
+        for (int i = 0; i < end; i++) {
+            if (i >= start) {
+                newList.add(current.element);
+            }
+            current = current.next;
+        }
+        return newList;
     }
 
     /**
