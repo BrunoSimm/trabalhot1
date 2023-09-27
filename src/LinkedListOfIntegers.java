@@ -184,7 +184,7 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
             if (current.element == element) return i;
             current = current.next;
         }
-        return -1;
+        return -1; // Retorna -1 caso não encontre o elemento.
     }
 
     @Override
@@ -196,22 +196,51 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
 
     @Override
     public void sort() {
+        if (count <= 1) {// Lista vazia ou 1 elemento não é necessário ordenar.
+            return;
+        }
 
+        Node current = head;
+        while (current != null) {
+            Node maxNode = current;
+            Node nextNode = current.next;
+
+            while (nextNode != null) { // Procura pelo maior elemento dentro da lista
+                if (nextNode.element > maxNode.element) {
+                    maxNode = nextNode;
+                }
+                nextNode = nextNode.next;
+            }
+
+            // Troca os valores do node atual (current) e do maior ('maxNode').
+            int temp = current.element;
+            current.element = maxNode.element;
+            maxNode.element = temp;
+
+            current = current.next;
+        }
     }
 
     @Override
     public void reverse() {
-        if (count > 1) {
-            Node headAux = head;
-            Node tailAux = tail;
-            for (int i = 0; i < count / 2; i++) {
-                int aux = headAux.element;
-                headAux.element = tailAux.element;
-                tailAux.element = aux;
-                headAux = headAux.next;
-                tailAux = tailAux.next;
-            }
+        if (count <= 1) {// Lista vazia ou 1 elemento não é necessário inverter.
+            return;
         }
+
+        Node current = head;
+        Node previous = null;
+        Node nextNodeTemp;
+
+        while (current != null) { //Até chegar ao final da lista
+            nextNodeTemp = current.next; // Salva o próximo node.
+            current.next = previous; // Inverte o ponteiro next do node atual para o node anterior.
+            previous = current;     // Atualiza o node anterior para o node atual.
+            current = nextNodeTemp;     // Move para o próximo node.
+        }
+
+        // Atualiza head para ser o antigo tail.
+        tail = head;
+        head = previous; // Head aponta para o último node da lista.
     }
 
     @Override

@@ -14,8 +14,8 @@ public class MainLinked {
 //        array.removeByIndex(0);
 //        array.add(25);
         LinkedListOfIntegers newArray = array.getSubset(0, 3);
-        array.reverse();
-//        array.sort();
+//        array.reverse();
+        array.sort();
         System.out.println(array);
 
     }
