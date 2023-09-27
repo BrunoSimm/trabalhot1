@@ -65,12 +65,21 @@ public class LinkedListOfIntegers implements ListOfIntegers<LinkedListOfIntegers
     @Override
     public int set(int index, int element) {
         this.rangeCheck(index);
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
+        int aux;
+        if (index == 0) {
+            aux = head.element;
+            head.element = element;
+        } else if (index == count - 1) {
+            aux = tail.element;
+            tail.element = element;
+        } else {
+            Node current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            aux = current.element;
+            current.element = element;
         }
-        int aux = current.element;
-        current.element = element;
         return aux;
     }
 
